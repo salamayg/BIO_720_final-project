@@ -13,10 +13,16 @@
 \usepackage{color, colortbl}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{hyperref}
 \usepackage[margin=10pt,font=small,labelfont=bf,labelsep=space]{caption}
 
 \setlength\unitlength{1mm}
-
+\hypersetup{
+	colorlinks,
+	linkcolor={blue!50!black},
+	citecolor={blue!80!black},
+	urlcolor={blue!80!black}
+}
 
 \definecolor{Gray}{gray}{0.9}
 %%%%%%%%%%%%%%%%%%
@@ -48,16 +54,23 @@
 	}
 \begin{document}
 	\maketitle
+	\thispagestyle{empty}
 	\clearpage
 	\begin{abstract}
+		\pagenumbering{Roman} 
 		TEST TEST TEST
 	\end{abstract}
 	\clearpage
 	\tableofcontents
 	\listoffigures
 	\clearpage
-	\section{Introduction}
+	\section*{Preface}
+	The GitHub repository for this report is located \href{https://github.com/salamayg/BIO720}{here.} The repository is set up to contain only the shell, perl, and R scripts used for generating all of the results, as well as the text files containing the count data. The repository does not contain the read files or any subsequent files associated with the reads. The repository is not a clone of the directory on the cluster, however, all the files on the cluster can be accessed (read permission) at /home/yasser/bio720/final\_project. 
 	
+	When explaining any method or result generated through a script, I will refer to the script in brackets by its names in the scripts folder of the GitHub repository. All the scripts are commented and contain more information about the individual commands than the report will give. 
+	\clearpage
+	\section{Introduction}
+	\pagenumbering{arabic} 
 	The prevention of crop loss in the horticulture and agriculture sectors has been a long-standing concern because of the significant economic and societal impacts these losses have. The agriculture industry makes up almost 7\% of Canada's gross domestic product, and with a growing world population, food and water scarcity, and rising global temperatures, these effects will become magnified~\cite{govcan:2015:Online,asseng2015rising,schewe2014multimodel}. 
 	
 	Abiotic stressors such as drought, salinity, and extreme temperature variations are major drivers of crop loss and can result in 50\% to 80\% loss of crop yield, depending on the crop and growth stage~\cite{boyer1982plant}. Drought is a major facet of abiotic stressors which accounts for approximately 40\% of the indemnities paid for crop loss, larger than any other stressor. As well, in certain crops such as maize and rice, drought alone can account for up to 80\% of the yield loss~\cite{farooq2009plant}. These are extravagant losses with far-reaching impacts. It is therefore imperative to examine the mechanisms by which drought stress can impact plants and their health, and how resistance mechanisms are adapted to such conditions.
@@ -95,6 +108,7 @@
 	
 
 	\section{Methods}
+	\label{methods}
 	\subsection{Plant Growth and Drought Simulation}
 	\esal{} seeds corresponding to Yukon (Y) and Shandong (S) accessions were grown at 4\degree C for 4 and 7 days, respectively, to synchronize germination. Subsequently, pots were transferred to growth cabinets simulating standard growth conditions with an optimal watering schedule. The plants were grown under these conditions for 4 weeks after which the plants underwent exposure to drought simulation through complete water-restriction. Effects of the water-restriction were measured gravimetrically using the fraction of transpirable soil water (FTSW) metric. When the fraction reached 0\% (i.e. no remaining water in soil), the plants visibly wilted. Re-watering commenced on the day of wilting to 50\% of the soil capacity, followed by full saturation the next day. Tissue from plants undergoing normal growth conditions (WW, well-watered), drought conditions (D, drought), and re-watering conditions (RW, re-watered) was collected and total RNA was then isolated and processed for sequencing. 
 	
@@ -145,25 +159,38 @@
 		\caption[Sample Names and Information]{Sample names and information. Each combination of ecotype and treatment had two replicates, with some samples being run across two lanes. All samples were collectively run in four batches.}
 		\label{table:samples}
 	\end{table}
+	FastQC (v0.11.3) was used to validate read metrics prior to and after trimming~\cite{andrews2010fastqc} (script: Step1\_Concat\_trim.sh). A simple loop through all the generated FastQC output files using
+	\begin{lstlisting}
+	more */summary.txt | grep FAIL
+	\end{lstlisting}
+	from the fastqc\_reports/pre\_process/ and fastqc\_reports/post\_process/ folders provides a crude way of seeing which metrics fail.
 	
-	Quality trimming and adapter removal was accomplished with BBDuk from the BBMap suite~\cite{bbmap} (see ). The reference genome and annotation file for \esal{}~\cite{yang2013reference} were downloaded from Phytozyme (v10.3)~\cite{goodstein2012phytozome}. The reference genome is 241 Mb and corresponds to the Shandong ecotype. STAR (v2.3.2) was used to index the reference genome of \esal{} and map the quality filtered reads to the reference~\cite{dobin2013star} (Figure~\ref{read_stats}). The alignment file was outputted as a bam file already sorted by coordinated through the flags:
+	Quality trimming and adapter removal was accomplished with BBDuk from the BBMap suite~\cite{bbmap} (script: Step1\_Concat\_trim.sh). The reference genome and annotation file for \esal{}~\cite{yang2013reference} were downloaded from Phytozyme (v10.3)~\cite{goodstein2012phytozome}. The reference genome is 241 Mb and corresponds to the Shandong ecotype. STAR (v2.3.2) was used to index the reference genome of \esal{} and map the quality filtered reads to the reference~\cite{dobin2013star} (scripts: Step2\_Index\_ref.sh, Step3\_Align.sh) (Figure~\ref{read_stats}). The alignment file was outputted as a bam file already sorted by coordinated through the flag:
 	\begin{lstlisting}
 	--outSAMtype BAM SortedByCoordinate
 	\end{lstlisting}
 	
-	The bam file generated is in proper format for use with htseq-count and mitigates the need for subsequent sam to bam conversion and sorting. HTSeq-count(v0.6.1) was used to obtain counts for genes in the genome ~\cite{anders2014htseq}. 
+	The bam file generated is in proper format for use with htseq-count and mitigates the need for subsequent sam to bam conversion and sorting. HTSeq-count(v0.6.1) was used to obtain counts for genes in the genome ~\cite{anders2014htseq} using both union and intersection-nonempty modes (scripts: Step4\_Count\_*). 
 	
-	\begin{figure}[H]
-		\centering
-		\scalebox{0.7}{\input{trim_stats.tex}}
-		\caption[Read Processing Statistics]{Read processing and mapping. Values are given as pairs of reads. Samples run on multiple lanes are left separated. The mean percentage of trimmed reads which were sucessfully mapped are indicated for each ecotype.}
-		\label{read_stats}
-	\end{figure}
+	Read statistics for number of reads prior to and after trimming, as well as number of successfully mapped, were obtained (scripts: trim\_stats.sh, mapped\_stats.sh, read\_statistics.R). 
+
 	\subsection{Differential Gene Expression Analysis}
 	\section{Results}
 	\subsection{Sample Information and Read Statistics}
-	The samples used in this study are summarized in Table~\ref{table:samples}. Since lane effects may introduce a confounding factor and impact results, all the samples which were run on two lanes were left separated. Another potential confounding factor present in the data is the fact that all the samples weren't run together (i.e. run in different batches). Additionally, the only samples run in batch 4 were SRW-1 and SRW-2, which makes it very difficult to rule out whether this batch introduced a systematic variability not due solely to the sample conditions alone. Quality trimming of the samples revealed that the data was relatively high quality (only 2.4\% reads lost due to trimming). Further, mapping was relatively successful, with an average of 94\% of trimmed reads successfully mapping. Since the reference genome was generated using the Shandong ecotype, I checked whether there was a difference in the percentage of reads mapped between the Shandong and Yukon samples. It might be expected that Shandong samples would show greater percentage of mapped reads, but there wasn't enough evidence to say that the two ecotypes mapped with different efficiency (p = 0.09). 
+	The samples used in this study are summarized in Table~\ref{table:samples}. Since lane effects may introduce a confounding factor and impact results, all the samples which were run on two lanes were left separated. Another potential confounding factor present in the data is the fact that all the samples weren't run together (i.e. run in different batches). Additionally, the only samples run in batch 4 were SRW-1 and SRW-2, which makes it very difficult to rule out whether this batch introduced a systematic variability not due solely to the sample conditions alone. 
 	
+	FastQC analysis as described in Section~\ref{methods} suggests that even prior to trimming, read quality was a "pass". The only metrics which are considered as "fail" by FastQC are "Sequence duplication levels" and metrics associated with kmer and sequence content. The duplication levels are expected for RNA-seq data as many copies of the same transcript will be present. The kmer and sequence content also seems to be an artifact of the library prepartion method, which introduces nucleotide biases at the beginning of the sequence. More importantly, the  measures of sequence quailty and adapter contamination pass in all of the samples.
+	
+		\begin{figure}[H]
+			\centering
+			\scalebox{0.7}{\input{trim_stats.tex}}
+			\caption[Read Processing Statistics]{Read processing and mapping. Values are given as pairs of reads. Samples run on multiple lanes are left separated. The mean percentage of trimmed reads which were sucessfully mapped is indicated for each ecotype.}
+			\label{read_stats}
+		\end{figure}
+	
+	Quality trimming of the samples revealed that the data was relatively high quality (only 2.4\% reads lost due to trimming). Further, mapping was relatively successful, with an average of 94\% of trimmed reads successfully mapping (Figure ~\ref{read_stats}). Since the reference genome was generated using a Shandong ecotype plant, I checked whether there was a difference in the percentage of successfully mapped reads between the Shandong and Yukon samples. It might be expected that Shandong samples would show greater percentage of mapped reads, but there wasn't enough evidence to say that the two ecotypes mapped with different efficiency (p = 0.09). 
+	\subsection{k}
+	\subsection{Transcriptional Response to Drought}
 	\section{Discussion}
 \clearpage
 \bibliography{bibliography}

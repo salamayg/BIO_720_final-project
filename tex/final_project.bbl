@@ -51,6 +51,11 @@ Mitchell~JR MacLeod, Jeff Dedrick, Claire Ashton, Wilson~WL Sung, Marc~J
   to drought.
 \newblock {\em Physiologia plantarum}, 2015.
 
+\bibitem{andrews2010fastqc}
+S~Andrews et~al.
+\newblock Fastqc: A quality control tool for high throughput sequence data.
+\newblock {\em Reference Source}, 2010.
+
 \bibitem{bbmap}
 Brian Bushnell.
 \newblock Bbmap suite, 2014.

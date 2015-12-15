@@ -1,0 +1,77 @@
+\begin{thebibliography}{10}
+
+\bibitem{govcan:2015:Online}
+Government of~Canada.
+\newblock An overview of the canadian agriculture and agri-food system 2015,
+  August 2015.
+
+\bibitem{asseng2015rising}
+S~Asseng, F~Ewert, P~Martre, RP~R{\"o}tter, DB~Lobell, D~Cammarano, BA~Kimball,
+  MJ~Ottman, GW~Wall, JW~White, et~al.
+\newblock Rising temperatures reduce global wheat production.
+\newblock {\em Nature Climate Change}, 5(2):143--147, 2015.
+
+\bibitem{schewe2014multimodel}
+Jacob Schewe, Jens Heinke, Dieter Gerten, Ingjerd Haddeland, Nigel~W Arnell,
+  Douglas~B Clark, Rutger Dankers, Stephanie Eisner, Bal{\'a}zs~M Fekete,
+  Felipe~J Col{\'o}n-Gonz{\'a}lez, et~al.
+\newblock Multimodel assessment of water scarcity under climate change.
+\newblock {\em Proceedings of the National Academy of Sciences},
+  111(9):3245--3250, 2014.
+
+\bibitem{boyer1982plant}
+John~S Boyer.
+\newblock Plant productivity and environment.
+\newblock {\em Science}, 218(4571):443--448, 1982.
+
+\bibitem{farooq2009plant}
+M~Farooq, A~Wahid, N~Kobayashi, D~Fujita, and SMA Basra.
+\newblock Plant drought stress: effects, mechanisms and management.
+\newblock In {\em Sustainable Agriculture}, pages 153--188. Springer, 2009.
+
+\bibitem{yang2013reference}
+Ruolin Yang, David~E Jarvis, Hao Chen, Mark~A Beilstein, Jane Grimwood, Jerry
+  Jenkins, ShengQiang Shu, Simon Prochnik, Mingming Xin, Chuang Ma, et~al.
+\newblock The reference genome of the halophytic plant eutrema salsugineum.
+\newblock {\em Frontiers in plant science}, 4, 2013.
+
+\bibitem{xu2014leaf}
+Xiaojing Xu, Jinchao Feng, Shiyou L{\"u}, Greg~T Lohrey, Huiling An, Yijun
+  Zhou, and Matthew~A Jenks.
+\newblock Leaf cuticular lipids on the shandong and yukon ecotypes of saltwater
+  cress, eutrema salsugineum, and their response to water deficiency and impact
+  on cuticle permeability.
+\newblock {\em Physiologia plantarum}, 151(4):446--458, 2014.
+
+\bibitem{macleod2015exposure}
+Mitchell~JR MacLeod, Jeff Dedrick, Claire Ashton, Wilson~WL Sung, Marc~J
+  Champigny, and Elizabeth~A Weretilnyk.
+\newblock Exposure of two eutrema salsugineum (thellungiella salsuginea)
+  accessions to water deficits reveals different coping strategies in response
+  to drought.
+\newblock {\em Physiologia plantarum}, 2015.
+
+\bibitem{bbmap}
+Brian Bushnell.
+\newblock Bbmap suite, 2014.
+
+\bibitem{goodstein2012phytozome}
+David~M Goodstein, Shengqiang Shu, Russell Howson, Rochak Neupane, Richard~D
+  Hayes, Joni Fazo, Therese Mitros, William Dirks, Uffe Hellsten, Nicholas
+  Putnam, et~al.
+\newblock Phytozome: a comparative platform for green plant genomics.
+\newblock {\em Nucleic acids research}, 40(D1):D1178--D1186, 2012.
+
+\bibitem{dobin2013star}
+Alexander Dobin, Carrie~A Davis, Felix Schlesinger, Jorg Drenkow, Chris
+  Zaleski, Sonali Jha, Philippe Batut, Mark Chaisson, and Thomas~R Gingeras.
+\newblock Star: ultrafast universal rna-seq aligner.
+\newblock {\em Bioinformatics}, 29(1):15--21, 2013.
+
+\bibitem{anders2014htseq}
+Simon Anders, Paul~Theodor Pyl, and Wolfgang Huber.
+\newblock Htseq--a python framework to work with high-throughput sequencing
+  data.
+\newblock {\em Bioinformatics}, page btu638, 2014.
+
+\end{thebibliography}

@@ -1,0 +1,173 @@
+\documentclass[12pt]{article}
+%%%%%PACKAGES%%%%%
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{booktabs}
+\usepackage{lmodern}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{color, colortbl}
+\usepackage{float}
+\usepackage{listings}
+\usepackage[margin=10pt,font=small,labelfont=bf,labelsep=space]{caption}
+
+\setlength\unitlength{1mm}
+
+
+\definecolor{Gray}{gray}{0.9}
+%%%%%%%%%%%%%%%%%%
+%%%%%OPTIONS%%%%%%
+%%HEADER%%
+\pagestyle{fancy}
+\lhead{BIO720 Final Project}
+\chead{}
+\rhead{Yasser Salama}
+
+
+%%%%%COMMANDS%%%%%
+\newcommand{\esal}{\textit{E. salsugenium}}
+%%%%%TITLE%%%%%%%%
+%Alternate Title%Methodology and Application of Metagenomics for the Characterization of Bacterial Populations in Aquatic Environments
+\title{\textsc{Transcriptional Response to Drought Stress in \textit{Eutrema salsugenium}}}
+\author{
+	{\textsc{\Large Yasser Salama}}\\
+	\\
+	{McMaster University}\\
+	{Hamilton, Ontario, Canada, L8S 4E8}\\
+	%{\includegraphics[scale=0.03]{"D:/Dropbox/School/Graduate School/Masters/Thesis/Images/logo_crop"}}
+	}
+\date{
+	{\today}\\
+	{\vfill BIO 720 | Bioinformatics}\\
+	{Submitted to:}\\
+	{Drs. \textsc{Dworkin, Evans, and Golding}}
+	}
+\begin{document}
+	\maketitle
+	\clearpage
+	\begin{abstract}
+		TEST TEST TEST
+	\end{abstract}
+	\clearpage
+	\tableofcontents
+	\listoffigures
+	\clearpage
+	\section{Introduction}
+	
+	The prevention of crop loss in the horticulture and agriculture sectors has been a long-standing concern because of the significant economic and societal impacts these losses have. The agriculture industry makes up almost 7\% of Canada's gross domestic product, and with a growing world population, food and water scarcity, and rising global temperatures, these effects will become magnified~\cite{govcan:2015:Online,asseng2015rising,schewe2014multimodel}. 
+	
+	Abiotic stressors such as drought, salinity, and extreme temperature variations are major drivers of crop loss and can result in 50\% to 80\% loss of crop yield, depending on the crop and growth stage~\cite{boyer1982plant}. Drought is a major facet of abiotic stressors which accounts for approximately 40\% of the indemnities paid for crop loss, larger than any other stressor. As well, in certain crops such as maize and rice, drought alone can account for up to 80\% of the yield loss~\cite{farooq2009plant}. These are extravagant losses with far-reaching impacts. It is therefore imperative to examine the mechanisms by which drought stress can impact plants and their health, and how resistance mechanisms are adapted to such conditions.
+	
+	The plant response to drought stress is well documented, albeit not fully characterized. In general, the reduction in water availability limits turgidity, inhibiting cell elongation and negatively impacting morphology~\cite{farooq2009plant}. As well, limited nutrient availability, photosynthetic deficits, and consequently diminished mitosis directly impact the health of the plant. 
+	The mechanisms by which plants can resist against drought can vary greatly, but typically, there is an attempt to reduce the water requirement through reduced leaf number and surface area, and maximize water uptake through root proliferation. Physiological responses also result in protection against oxidative stress which arise from the generation of reactive oxygen species. These mechanisms involve elevated expression of enzymatic constituents for oxidative stress protection~\cite{farooq2009plant}. Overall, the stress response and resistance mechanisms are extremely complex, and encompass a variety of biological mechanisms. 
+	
+	The complexity of the stress response is supplemented by the finding that over-expression of known stress-responsive genes typically has little effect on mitigating the stressors' impact. This is likely attributed to the network and co-regulatory nature of the stress response, and requires a more comprehensive understanding of the underlying molecular and physiological changes which occur in response to stress. A useful tool for understanding the stress response and the mechanisms by which it manifests is to examine the complete transcriptional regulation network and the changes that occur once a stress is applied. For the example of drought stress, restriction of water and subsequent comparative examination of the transcriptional changes which occur may provide great insight into the mechanisms for the stress response, and in the case of a drought-tolerant organism, the drought resistance mechanism. 
+	
+	\textit{Eutrema salsugineum} is a halophytic plant, capable of thriving in various abiotic stress conditions, and is an ideal organism to study the response and resistance mechanism to drought. \esal{} is closely related to the well studied model plant \textit{Arabidopsis thaliana}, with an estimated divergence time of around 43 million years (Figure \ref{phylo}). An important physiological adaptation in \esal{} is the presence of a low permeability cuticle, which reduces the loss of water through the leaves. This waxy cuticle has been observed to be much more abundant in \esal{} than \textit{A. thaliana}, suggesting that this is an adaptive trait for drought resistance. 
+	
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=2]{../figures/esal_phylo.jpg}
+			\caption[Brassicaceae Phylogeny]{Brassicaceae phylogeny inferred with two markers, \textit{ndhF} and \textit{PHYA}~\cite{yang2013reference}.}
+			\label{phylo}
+		\end{figure}
+		
+	Intriguingly, two different ecotypes of \esal{}, Shandong and Yukon, exist, with different standard environmental conditions. Whereas the Yukon ecotype is sustained in sub-arctic temperatures and a semi-arid climate, the Shandong region is more temperate, although both regions feature a high salinity soil. These two ecotypes show distinct responses to drought stress \cite{xu2014leaf}. Previous findings have shown that the Shandon ecotype seems to have a delayed response to drought and differential changes in cuticle permeability traits between the two ecotypes~\cite{macleod2015exposure}. 
+	
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.2]{../figures/esal_morpho.png}
+			\caption[Shandong and Yukon ecotype morphology]{Shandon and Yukon accessions of \esal{}.}
+			\label{morpho}
+		\end{figure}
+		
+	The underlying reasons for the differential stress response and resistance of these two ecotypes is not well characterized, and provides a great opportunity to possibly elucidate the molecular mechanisms through which drought is tolerated in plants. By examining the transcriptional adjustments \esal{} undergoes in response to stress, we may begin to understand what pathways are important for this process. By examining two different ecotypes, we can also identify common mechanisms and mechanisms unique to each accession, which is quite informative. 
+	
+	In this work, we examine the transcriptional response of both \esal{} ecotypes to drought through RNA-seq analysis of Shandon and Yukon ecotypes of \esal{} in well-watered and drought treated conditions. We also examine how the recovery of these plants manifests through a re-watering phase. 
+
+
+	Establish challenges and the impact of these challenges. Explain that having a model that may provide a foundation of understanding for bypassing these challenges is obviously extremely useful and is needed. Introduce E salsugineum as such a model. Describe it and then the ecotypes and then what is known already. Then describe about what is not known (how the ecotypes differ) and how understanding this can help such agricultural challenges. Describe how you did it, and then a brief overview of the findings.
+	
+	
+
+	\section{Methods}
+	\subsection{Plant Growth and Drought Simulation}
+	\esal{} seeds corresponding to Yukon (Y) and Shandong (S) accessions were grown at 4\degree C for 4 and 7 days, respectively, to synchronize germination. Subsequently, pots were transferred to growth cabinets simulating standard growth conditions with an optimal watering schedule. The plants were grown under these conditions for 4 weeks after which the plants underwent exposure to drought simulation through complete water-restriction. Effects of the water-restriction were measured gravimetrically using the fraction of transpirable soil water (FTSW) metric. When the fraction reached 0\% (i.e. no remaining water in soil), the plants visibly wilted. Re-watering commenced on the day of wilting to 50\% of the soil capacity, followed by full saturation the next day. Tissue from plants undergoing normal growth conditions (WW, well-watered), drought conditions (D, drought), and re-watering conditions (RW, re-watered) was collected and total RNA was then isolated and processed for sequencing. 
+	
+
+	%notes
+	the genome is shandong. checked reads mapped.
+	only looked at leaves not roots which have the most response to drought
+	243 mb genome (check this)
+	overexpression of gene induced in stress response has little effect, so its complex. critical reviews in plant sciences
+	coverage of mapped reads?
+	%notes
+	\subsection{Sequencing and RNA-seq Pipeline}
+	Two replicates of each treatment and ecotype were used in this analysis, resulting in 12 total samples. Sequencing was completed on a HiSeq 2000 in four batches. A subset of the samples were split onto two lanes, while the rest were run solely on one lane (multiple lane samples are denoted by L1 and L2, see Table \ref{table:samples}). 
+	
+	\begin{table}[H]
+		\centering
+		\begin{tabular}{lllrrr}
+			\toprule
+			Sample & Ecotype & Treatment & Replicate & Lane & Batch\\
+			\midrule
+			\rowcolor{Gray}
+			SD-1 & Shandong & Drought & 1 & 2 & 2\\
+			SD-2 & Shandong & Drought & 2 & 2 & 2\\
+			\rowcolor{Gray}
+			SRW-1.L1 & Shandong & Re-watered & 1 & 1 & 4\\
+			\rowcolor{Gray}
+			SRW-1.L2 & Shandong & Re-watered & 1 & 2 & 4\\
+			SRW-2.L1 & Shandong & Re-watered & 2 & 1 & 4\\
+			SRW-2.L2 & Shandong & Re-watered & 2 & 2 & 4\\
+			\rowcolor{Gray}
+			SWW-1 & Shandong & Well-watered & 1 & 2 & 2\\
+			SWW-3.L1 & Shandong & Well-watered & 3 & 1 & 3\\
+			SWW-3.L2 & Shandong & Well-watered & 3 & 2 & 3\\
+			\rowcolor{Gray}
+			YD-1 & Yukon & Drought & 1 & 3 & 1\\
+			YD-2.L1 & Yukon & Drought & 2 & 1 & 3\\
+			YD-2.L2 & Yukon & Drought & 2 & 2 & 3\\
+			\rowcolor{Gray}
+			YRW-1 & Yukon & Re-watered & 1 & 3 & 1\\
+			YRW-2.L1 & Yukon & Re-watered & 2 & 1 & 3\\
+			YRW-2.L2 & Yukon & Re-watered & 2 & 2 & 3\\
+			\rowcolor{Gray}
+			YWW-1 & Yukon & Well-watered & 1 & 5 & 1\\		
+			YWW-2.L1 & Yukon & Well-watered & 2 & 1 & 3\\
+			YWW-2.L2 & Yukon & Well-watered & 2 & 2 & 3\\
+			\bottomrule
+		\end{tabular}
+		\caption[Sample Names and Information]{Sample names and information. Each combination of ecotype and treatment had two replicates, with some samples being run across two lanes. All samples were collectively run in four batches.}
+		\label{table:samples}
+	\end{table}
+	
+	Quality trimming and adapter removal was accomplished with BBDuk from the BBMap suite~\cite{bbmap} (see ). The reference genome and annotation file for \esal{}~\cite{yang2013reference} were downloaded from Phytozyme (v10.3)~\cite{goodstein2012phytozome}. The reference genome is 241 Mb and corresponds to the Shandong ecotype. STAR (v2.3.2) was used to index the reference genome of \esal{} and map the quality filtered reads to the reference~\cite{dobin2013star} (Figure~\ref{read_stats}). The alignment file was outputted as a bam file already sorted by coordinated through the flags:
+	\begin{lstlisting}
+	--outSAMtype BAM SortedByCoordinate
+	\end{lstlisting}
+	
+	The bam file generated is in proper format for use with htseq-count and mitigates the need for subsequent sam to bam conversion and sorting. HTSeq-count(v0.6.1) was used to obtain counts for genes in the genome ~\cite{anders2014htseq}. 
+	
+	\begin{figure}[H]
+		\centering
+		\scalebox{0.7}{\input{trim_stats.tex}}
+		\caption[Read Processing Statistics]{Read processing and mapping. Values are given as pairs of reads. Samples run on multiple lanes are left separated. The mean percentage of trimmed reads which were sucessfully mapped are indicated for each ecotype.}
+		\label{read_stats}
+	\end{figure}
+	\subsection{Differential Gene Expression Analysis}
+	\section{Results}
+	\subsection{Sample Information and Read Statistics}
+	The samples used in this study are summarized in Table~\ref{table:samples}. Since lane effects may introduce a confounding factor and impact results, all the samples which were run on two lanes were left separated. Another potential confounding factor present in the data is the fact that all the samples weren't run together (i.e. run in different batches). Additionally, the only samples run in batch 4 were SRW-1 and SRW-2, which makes it very difficult to rule out whether this batch introduced a systematic variability not due solely to the sample conditions alone. Quality trimming of the samples revealed that the data was relatively high quality (only 2.4\% reads lost due to trimming). Further, mapping was relatively successful, with an average of 94\% of trimmed reads successfully mapping. Since the reference genome was generated using the Shandong ecotype, I checked whether there was a difference in the percentage of reads mapped between the Shandong and Yukon samples. It might be expected that Shandong samples would show greater percentage of mapped reads, but there wasn't enough evidence to say that the two ecotypes mapped with different efficiency (p = 0.09). 
+	
+	\section{Discussion}
+\clearpage
+\bibliography{bibliography}
+\bibliographystyle{unsrt}
+\end{document}
+
+

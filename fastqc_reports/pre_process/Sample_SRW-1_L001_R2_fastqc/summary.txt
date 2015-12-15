@@ -1,0 +1,12 @@
+PASS	Basic Statistics	Sample_SRW-1_L001_R2.fastq.gz
+PASS	Per base sequence quality	Sample_SRW-1_L001_R2.fastq.gz
+WARN	Per tile sequence quality	Sample_SRW-1_L001_R2.fastq.gz
+PASS	Per sequence quality scores	Sample_SRW-1_L001_R2.fastq.gz
+FAIL	Per base sequence content	Sample_SRW-1_L001_R2.fastq.gz
+PASS	Per sequence GC content	Sample_SRW-1_L001_R2.fastq.gz
+PASS	Per base N content	Sample_SRW-1_L001_R2.fastq.gz
+PASS	Sequence Length Distribution	Sample_SRW-1_L001_R2.fastq.gz
+FAIL	Sequence Duplication Levels	Sample_SRW-1_L001_R2.fastq.gz
+PASS	Overrepresented sequences	Sample_SRW-1_L001_R2.fastq.gz
+PASS	Adapter Content	Sample_SRW-1_L001_R2.fastq.gz
+FAIL	Kmer Content	Sample_SRW-1_L001_R2.fastq.gz

@@ -1,5 +1,5 @@
 #!/bin/bash
-#Step 4 of RNA-seq analysis: Counting reads to genes
+#Step 4 of RNA-seq analysis: Counting reads to genes using union mode.
 
 annotation=/home/yasser/bio720/final_project/data/esal_reference/Esalsugineum_173_v1.0.gene_exons.gff3;
 dir=htseq_counts_union_newest;

@@ -1,0 +1,12 @@
+PASS	Basic Statistics	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+PASS	Per base sequence quality	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+PASS	Per tile sequence quality	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+PASS	Per sequence quality scores	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+FAIL	Per base sequence content	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+WARN	Per sequence GC content	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+PASS	Per base N content	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+WARN	Sequence Length Distribution	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+FAIL	Sequence Duplication Levels	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+PASS	Overrepresented sequences	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+PASS	Adapter Content	Sample_YRW-2_L001_R1.bbduk.fastq.gz
+FAIL	Kmer Content	Sample_YRW-2_L001_R1.bbduk.fastq.gz

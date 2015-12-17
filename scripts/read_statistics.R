@@ -32,9 +32,21 @@ mapped <- read.csv("mapped_statistics.txt", header=FALSE)
 pretrim <- data.frame(mapped$V1,pretrim)
 posttrim <- data.frame(mapped$V1,posttrim)
 
+
 colnames(pretrim) <- c("Sample","Reads")
 colnames(posttrim) <- c("Sample","Reads")
 colnames(mapped) <- c("Sample","Reads")
+
+#consolidate rows corresponding to same sample on different lanes
+pretrim <- aggregate(pretrim$Reads~pretrim$Sample,FUN=sum)
+posttrim <- aggregate(posttrim$Reads~posttrim$Sample,FUN=sum)
+mapped <- aggregate(mapped$Reads~mapped$Sample,FUN=sum)
+
+
+colnames(pretrim) <- c("Sample","Reads")
+colnames(posttrim) <- c("Sample","Reads")
+colnames(mapped) <- c("Sample","Reads")
+
 
 pretrim$Name <- "Pre-trimming"
 posttrim$Name <- "Post-trimming"
@@ -47,12 +59,11 @@ readCounts <- transform(readCounts,
                         Sample = reorder(Sample, Reads))
 
 readCounts$Name <- as.factor(readCounts$Name)
-readCounts$Eco <- NA
 
 
 ##Plot graph (and optionally create .tex file of graph for use with latex)
 #
-#tikz(file = "D:\\Dropbox\\School\\Graduate School\\Masters\\Grad_Courses\\BIO720\\final_project\\tex\\trim_stats.tex")
+#tikz(file = "D:\\Dropbox\\School\\Graduate School\\Masters\\Grad_Courses\\BIO720\\final_project\\tex\\trim_stats_nolane.tex")
 p <- ggplot(readCounts, order=-as.numeric(name), aes(Sample, Reads, fill = Name)) + geom_bar(width=0.8, position = "dodge",stat="identity", alpha=0.65)
 p + coord_flip() + 
   theme_bw() + 
@@ -78,6 +89,6 @@ percentages.df[percentages.df$Sample == grep("^Y", percentages.df$Sample, value=
 #Get mean percentage of reads mapped for each accession and do a simple t test to see if they are different 
 #(not sure if this is a valid test since it is technically a percentage, but roughly, 
 #there doens't seem to be a difference in % of mapped reads between ecotypes)
-summaryBy(Percentage~Eco, percentages.df)
-t.test(percentages.df$Percentage~percentages.df$Eco)
+summaryBy(Percentage~Eco, percentages.df,FUN=c(mean,var))
+  t.test(percentages.df$Percentage~percentages.df$Eco)
 

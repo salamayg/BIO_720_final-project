@@ -1,0 +1,21 @@
+Thhalv10003191m dual specificity kinase 1
+Thhalv10003192m dual specificity kinase 1
+Thhalv10004468m Adenosylmethionine decarboxylase family protein
+Thhalv10005532m basic leucine-zipper 1
+Thhalv10007302m Major facilitator superfamily protein
+Thhalv10008115m myb-like transcription factor family protein
+Thhalv10008980m Glutaredoxin family protein
+Thhalv10009104m photosystem II reaction center W
+Thhalv10009301m myo-inositol oxygenase 1
+Thhalv10010666m LOB domain-containing protein 38
+Thhalv10013774m Eukaryotic aspartyl protease family protein
+Thhalv10014734m
+Thhalv10014990m
+Thhalv10017988m
+Thhalv10018663m B-box type zinc finger protein with CCT domain
+Thhalv10018763m Galactose oxidase/kelch repeat superfamily protein
+Thhalv10019053m Pathogenesis-related thaumatin superfamily protein
+Thhalv10025559m leucoanthocyanidin dioxygenase
+Thhalv10026359m Glutaredoxin family protein
+Thhalv10028074m basic helix-loop-helix (bHLH) DNA-binding family protein
+Thhalv10028838m ATP synthase delta-subunit gene

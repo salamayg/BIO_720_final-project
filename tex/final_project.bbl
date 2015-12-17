@@ -29,6 +29,11 @@ M~Farooq, A~Wahid, N~Kobayashi, D~Fujita, and SMA Basra.
 \newblock Plant drought stress: effects, mechanisms and management.
 \newblock In {\em Sustainable Agriculture}, pages 153--188. Springer, 2009.
 
+\bibitem{bartels2005}
+Dorothea Bartels and Ramanjulu Sunkar.
+\newblock {Drought and salt tolerance in plants}.
+\newblock {\em {Critical Reviews in Plant Sciences}}, 24(1):23--58, 2005.
+
 \bibitem{yang2013reference}
 Ruolin Yang, David~E Jarvis, Hao Chen, Mark~A Beilstein, Jane Grimwood, Jerry
   Jenkins, ShengQiang Shu, Simon Prochnik, Mingming Xin, Chuang Ma, et~al.
@@ -78,5 +83,44 @@ Simon Anders, Paul~Theodor Pyl, and Wolfgang Huber.
 \newblock Htseq--a python framework to work with high-throughput sequencing
   data.
 \newblock {\em Bioinformatics}, page btu638, 2014.
+
+\bibitem{rsoftware}
+{R Development Core Team}.
+\newblock {\em R: A Language and Environment for Statistical Computing}.
+\newblock R Foundation for Statistical Computing, Vienna, Austria, 2008.
+\newblock {ISBN} 3-900051-07-0.
+
+\bibitem{deseq}
+Michael~I Love, Wolfgang Huber, and Simon Anders.
+\newblock Moderated estimation of fold change and dispersion for rna-seq data
+  with deseq2.
+\newblock {\em Genome Biology}, 15:550, 2014.
+
+\bibitem{guo2010tomato}
+Yushuang Guo, Changjun Huang, Yan Xie, Fengming Song, and Xueping Zhou.
+\newblock A tomato glutaredoxin gene slgrx1 regulates plant responses to
+  oxidative, drought and salt stresses.
+\newblock {\em Planta}, 232(6):1499--1509, 2010.
+
+\bibitem{ariel2010lob}
+Federico~D Ariel, Anouck Diet, Martin Crespi, and Raquel~L Chan.
+\newblock The lob-like transcription factor mtlbd1 controls medicago truncatula
+  root architecture under salt stress.
+\newblock {\em Plant signaling \& behavior}, 5(12):1666--1668, 2010.
+
+\bibitem{farrant1996presence}
+Jill~M Farrant, Norman~W Pammenter, Patricia Berjak, Elizabeth~J Farnsworth,
+  and Christina~W Vertucci.
+\newblock Presence of dehydrin-like proteins and levels of abscisic acid in
+  recalcitrant (desiccation sensitive) seeds may be related to habitat.
+\newblock {\em Seed Science Research}, 6(04):175--182, 1996.
+
+\bibitem{leek2010tackling}
+Jeffrey~T Leek, Robert~B Scharpf, H{\'e}ctor~Corrada Bravo, David Simcha,
+  Benjamin Langmead, W~Evan Johnson, Donald Geman, Keith Baggerly, and Rafael~A
+  Irizarry.
+\newblock Tackling the widespread and critical impact of batch effects in
+  high-throughput data.
+\newblock {\em Nature Reviews Genetics}, 11(10):733--739, 2010.
 
 \end{thebibliography}
